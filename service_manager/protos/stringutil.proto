@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package strutil;
+
+service StringUtil {
+  rpc Reverse(String) returns (String) {}
+}
+
+message String {
+  string value = 1;
+}

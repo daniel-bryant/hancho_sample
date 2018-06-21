@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package math;
+
+service Math {
+  rpc Add(IntPair) returns (Int) {}
+}
+
+message IntPair {
+  int32 first_value = 1;
+  int32 second_value = 2;
+}
+
+message Int {
+  int32 value = 1;
+}
