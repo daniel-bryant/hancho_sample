@@ -1,6 +1,7 @@
 package main
 
 import (
+  "flag"
   "log"
   "net"
 
@@ -8,10 +9,6 @@ import (
   "google.golang.org/grpc"
   pb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/stringutil"
   "google.golang.org/grpc/reflection"
-)
-
-const (
-  port = ":50052"
 )
 
 // server is used to implement strutil.StringUtilServer.
@@ -28,7 +25,10 @@ func (s *server) Reverse(ctx context.Context, in *pb.String) (*pb.String, error)
 }
 
 func main() {
-  lis, err := net.Listen("tcp", port)
+  port := flag.String("port", "50051", "app port to listen on")
+  flag.Parse()
+
+  lis, err := net.Listen("tcp", ":" + *port)
   if err != nil {
     log.Fatalf("failed to listen: %v", err)
   }

@@ -11,9 +11,11 @@ import (
   mathPb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/math"
 )
 
-func testHelloworld() {
-  address := "localhost:50051"
+const (
+  address = "localhost:50051"
+)
 
+func testHelloworld() {
   // Set up a connection to the server.
   conn, err := grpc.Dial(address, grpc.WithInsecure())
   if err != nil {
@@ -40,8 +42,6 @@ func testHelloworld() {
 }
 
 func testStringUtil() {
-  address := "localhost:50052"
-
   // Set up a connection to the server.
   conn, err := grpc.Dial(address, grpc.WithInsecure())
   if err != nil {
@@ -62,8 +62,6 @@ func testStringUtil() {
 }
 
 func testMath() {
-  address := "localhost:50053"
-
   // Set up a connection to the server.
   conn, err := grpc.Dial(address, grpc.WithInsecure())
   if err != nil {
