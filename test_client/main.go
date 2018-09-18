@@ -7,7 +7,7 @@ import (
   "golang.org/x/net/context"
   "google.golang.org/grpc"
   helloPb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/helloworld"
-  stringPb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/stringutil"
+  utilPb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/utilities"
   mathPb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/math"
 )
 
@@ -48,13 +48,13 @@ func testStringUtil() {
     log.Fatalf("did not connect: %v", err)
   }
   defer conn.Close()
-  c := stringPb.NewStringUtilClient(conn)
+  c := utilPb.NewStringUtilClient(conn)
 
   // Contact the server and print out its response.
   value := "!desrever yllufsseccuS"
   ctx, cancel := context.WithTimeout(context.Background(), time.Second)
   defer cancel()
-  r, err := c.Reverse(ctx, &stringPb.String{Value: value})
+  r, err := c.Reverse(ctx, &utilPb.String{Value: value})
   if err != nil {
     log.Fatalf("could not reverse: %v", err)
   }

@@ -7,14 +7,14 @@ import (
 
   "golang.org/x/net/context"
   "google.golang.org/grpc"
-  pb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/stringutil"
+  pb "github.com/daniel-bryant/honcho_sample/service_manager/gen/go/utilities"
   "google.golang.org/grpc/reflection"
 )
 
-// server is used to implement strutil.StringUtilServer.
+// server is used to implement utilities.StringUtilServer.
 type server struct{}
 
-// Reverse implements strutil.StringUtilServer
+// Reverse implements utilities.StringUtilServer
 func (s *server) Reverse(ctx context.Context, in *pb.String) (*pb.String, error) {
   // https://golang.org/doc/code.html#Library
   r := []rune(in.Value)

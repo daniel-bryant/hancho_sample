@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package strutil;
+package utilities;
 
 service StringUtil {
   rpc Reverse(String) returns (String) {}
