@@ -35,6 +35,7 @@ func main() {
   pb.RegisterGreeterServer(s, &server{})
   // Register reflection service on gRPC server.
   reflection.Register(s)
+  log.Printf("Server listening on port %s", *port)
   if err := s.Serve(lis); err != nil {
     log.Fatalf("failed to serve: %v", err)
   }
